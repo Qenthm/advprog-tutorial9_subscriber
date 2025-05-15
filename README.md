@@ -15,3 +15,15 @@ This is a connection string used to connect to an AMQP broker (like RabbitMQ).
 
 So, `guest:guest@localhost:5672` means:  
 Connect to an AMQP broker running on your own computer (localhost) at port 5672, using the username `guest` and password `guest`.
+
+---
+
+## Simulation: Slow Subscriber
+
+### Screenshot
+
+![RabbitMQ Queue Count Screenshot](slow.jpg)
+
+### Why is the total number of queues as such?
+
+The total number of queues in RabbitMQ depends on how many queues have been declared by all publishers and subscribers, including any test or default queues. In my machine, the total number of queues is **[replace_with_your_number]**. This number may differ from your machine (which is 20) due to differences in running services, test runs, or leftover queues from previous experiments. Each time a new queue is declared (for example, by running the subscriber or publisher), RabbitMQ creates it if it does not already exist.
